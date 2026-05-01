@@ -1,0 +1,14 @@
+<%- include("partials/header.ejs") %>
+
+<form action="/edit-post" method="post" >
+
+<% newPostDatas.forEach(newPostData => { %>
+    <label> <H1><%= newPostData.blogTitle %> </H1> </label>
+    <input name="post-title" class="article-title" type="text" placeholder="Write title" required>
+    <button type="submit" name="action" value="Save">Save</button>
+<% }); %>
+
+</form>
+
+
+<%- include("partials/footer.ejs") %>

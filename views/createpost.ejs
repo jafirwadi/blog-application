@@ -1,0 +1,304 @@
+<%- include("partials/header.ejs") %>
+
+<div class="page-wrapper">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#2196F3" viewBox="0 0 16 16">
+        <path d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+        <path d="M4.5 4h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1zm0 3h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1zm0 3h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/>
+      </svg>
+      <span class="sidebar-logo-text">Blog App</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="/" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6-.002.002-.002.001-.003.003-.004.003a.5.5 0 0 0 .67.737L2 7.64V12.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V7.64l.695.251a.5.5 0 1 0 .34-.933L13 6.58V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.276L8.354 1.146zM13 7.22V12.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.22l4.5-1.621 5.5 1.621z"/>
+        </svg>
+        All Posts
+      </a>
+      <a href="/drafts" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+        </svg>
+        Drafts
+      </a>
+      <a href="/trash" class="sidebar-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+        </svg>
+        Trash
+      </a>
+    </nav>
+  </aside>
+
+  <main class="create-main">
+    <div class="create-container">
+
+      <% if (locals.editTitle || locals.editBody) { %>
+        <h1 class="create-heading">Edit Post</h1>
+        <p class="create-subheading">Update your post content.</p>
+      <% } else { %>
+        <h1 class="create-heading">Create New Post</h1>
+        <p class="create-subheading">Draft your next blog post and share your insights with the world.</p>
+      <% } %>
+
+      <% if (locals.editTitle || locals.editBody) { %>
+      <form action="/action?id=<%= editID %>" method="POST" class="create-form">
+
+        <div class="form-group">
+          <label class="form-label">Post Title</label>
+          <input name="post-title" class="form-input" type="text"
+            placeholder="Write title" value="<%= editTitle %>" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Post Body</label>
+          <div class="editor-toolbar">
+            <!-- Text style -->
+            <button type="button" class="toolbar-btn" data-command="bold" title="Bold"><b>B</b></button>
+            <button type="button" class="toolbar-btn" data-command="italic" title="Italic"><i>I</i></button>
+            <button type="button" class="toolbar-btn" data-command="underline" title="Underline"><u>U</u></button>
+            <button type="button" class="toolbar-btn" data-command="strikeThrough" title="Strikethrough"><s>S</s></button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Headings -->
+            <select class="toolbar-select" id="heading-select" title="Heading">
+              <option value="">Paragraph</option>
+              <option value="H1">H1</option>
+              <option value="H2">H2</option>
+              <option value="H3">H3</option>
+              <option value="H4">H4</option>
+            </select>
+
+            <!-- Font size -->
+            <select class="toolbar-select" id="fontsize-select" title="Font Size">
+              <option value="3">Normal</option>
+              <option value="1">Small</option>
+              <option value="4">Large</option>
+              <option value="5">X-Large</option>
+              <option value="6">XX-Large</option>
+            </select>
+            <div class="toolbar-divider"></div>
+
+            <!-- Alignment -->
+            <button type="button" class="toolbar-btn" data-command="justifyLeft" title="Align Left">&#8676;</button>
+            <button type="button" class="toolbar-btn" data-command="justifyCenter" title="Center">&#8677;</button>
+            <button type="button" class="toolbar-btn" data-command="justifyRight" title="Align Right">&#8677;</button>
+            <button type="button" class="toolbar-btn" data-command="justifyFull" title="Justify">&#8644;</button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Lists -->
+            <button type="button" class="toolbar-btn" data-command="insertUnorderedList" title="Bullet List">&#8226;&#8212;</button>
+            <button type="button" class="toolbar-btn" data-command="insertOrderedList" title="Numbered List">1&#8212;</button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Indentation -->
+            <button type="button" class="toolbar-btn" data-command="indent" title="Indent">&#8677;</button>
+            <button type="button" class="toolbar-btn" data-command="outdent" title="Outdent">&#8676;</button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Quote -->
+            <button type="button" class="toolbar-btn" data-command="formatBlock" data-value="blockquote" title="Blockquote">❝</button>
+
+            <!-- Line gap -->
+            <button type="button" class="toolbar-btn" id="line-gap-btn" title="Insert Line Break">&#8617;</button>
+
+            <!-- Text color -->
+            <input type="color" class="toolbar-color" id="text-color" title="Text Color" value="#000000">
+
+            <!-- Table -->
+            <button type="button" class="toolbar-btn" id="insert-table-btn" title="Insert Table">&#9638;</button>
+          </div>
+          <div name="post-body" class="form-textarea" id="editor" contenteditable="true"
+            placeholder="Write your post content here..." required><%- editBody %></div>
+          <p class="form-hint">Content should be engaging and informative. Minimum 50 words for publishing.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tags</label>
+          <input name="post-tags" class="form-input" type="text" placeholder="Tech, Blogging, Productivity">
+          <p class="form-hint">Tags help readers discover your content.</p>
+        </div>
+
+        <div class="form-actions">
+        <% 
+          let cancelPath = "/";
+          if (locals.from === "fullpost") {
+            cancelPath = "/read-more?id=" + editID;
+          } else if (locals.from === "drafts") {
+            cancelPath = "/drafts";
+          } 
+        %>
+          <button type="button" onclick="window.location.href='<%= cancelPath %>'" class="btn-cancel">Cancel</button>                  
+          <button type="submit" name="action" value="draft" class="btn-draft">Save as Draft</button>
+          <button type="submit" name="action" value="update" class="btn-publish">Update Post</button>
+        </div>
+          <input type="hidden" name="post-body" id="post-body-input">
+      </form>
+
+      <% } else { %>
+      <form action="/create-post" method="POST" class="create-form">
+
+        <div class="form-group">
+          <label class="form-label">Post Title</label>
+          <input name="post-title" class="form-input" type="text"
+            placeholder="Write an engaging title..." required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Post Body</label>
+          <div class="editor-toolbar">
+            <!-- Text style -->
+            <button type="button" class="toolbar-btn" data-command="bold" title="Bold"><b>B</b></button>
+            <button type="button" class="toolbar-btn" data-command="italic" title="Italic"><i>I</i></button>
+            <button type="button" class="toolbar-btn" data-command="underline" title="Underline"><u>U</u></button>
+            <button type="button" class="toolbar-btn" data-command="strikeThrough" title="Strikethrough"><s>S</s></button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Headings -->
+            <select class="toolbar-select" id="heading-select" title="Heading">
+              <option value="">Paragraph</option>
+              <option value="H1">H1</option>
+              <option value="H2">H2</option>
+              <option value="H3">H3</option>
+              <option value="H4">H4</option>
+            </select>
+
+            <!-- Font size -->
+            <select class="toolbar-select" id="fontsize-select" title="Font Size">
+              <option value="3">Normal</option>
+              <option value="1">Small</option>
+              <option value="4">Large</option>
+              <option value="5">X-Large</option>
+              <option value="6">XX-Large</option>
+            </select>
+            <div class="toolbar-divider"></div>
+
+            <!-- Alignment -->
+            <button type="button" class="toolbar-btn" data-command="justifyLeft" title="Align Left">&#8676;</button>
+            <button type="button" class="toolbar-btn" data-command="justifyCenter" title="Center">&#8677;</button>
+            <button type="button" class="toolbar-btn" data-command="justifyRight" title="Align Right">&#8677;</button>
+            <button type="button" class="toolbar-btn" data-command="justifyFull" title="Justify">&#8644;</button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Lists -->
+            <button type="button" class="toolbar-btn" data-command="insertUnorderedList" title="Bullet List">&#8226;&#8212;</button>
+            <button type="button" class="toolbar-btn" data-command="insertOrderedList" title="Numbered List">1&#8212;</button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Indentation -->
+            <button type="button" class="toolbar-btn" data-command="indent" title="Indent">&#8677;</button>
+            <button type="button" class="toolbar-btn" data-command="outdent" title="Outdent">&#8676;</button>
+            <div class="toolbar-divider"></div>
+
+            <!-- Quote -->
+            <button type="button" class="toolbar-btn" data-command="formatBlock" data-value="blockquote" title="Blockquote">❝</button>
+
+            <!-- Line gap -->
+            <button type="button" class="toolbar-btn" id="line-gap-btn" title="Insert Line Break">&#8617;</button>
+
+            <!-- Text color -->
+            <input type="color" class="toolbar-color" id="text-color" title="Text Color" value="#000000">
+
+            <!-- Table -->
+            <button type="button" class="toolbar-btn" id="insert-table-btn" title="Insert Table">&#9638;</button>
+          </div>
+
+          <!-- content editor Toolbar-->
+          <div name="post-body" class="form-textarea" id="editor" 
+              contenteditable="true" 
+              placeholder="Write your post content here..."></div>
+          <input type="hidden" name="post-body" id="post-body-input">
+          <p class="form-hint">Content should be engaging and informative. Minimum 50 words for publishing.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tags</label>
+          <input name="post-tags" class="form-input" type="text" placeholder="Tech, Blogging, Productivity">
+          <p class="form-hint">Tags help readers discover your content.</p>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" name="action" value="draft" class="btn-cancel">Cancel</button>
+          <button type="submit" name="action" value="draft" class="btn-draft">Save Draft</button>
+          <button type="submit" name="action" value="publish" class="btn-publish">+ Publish</button>
+        </div>
+
+      </form>
+      <% } %>
+
+    </div>
+  </main>
+
+</div>
+
+<script>
+const editor = document.getElementById('editor');
+
+// Submit handler — copy innerHTML to hidden input
+document.querySelector('.create-form').addEventListener('submit', function() {
+    document.getElementById('post-body-input').value = editor.innerHTML;
+});
+
+// Generic toolbar buttons
+document.querySelectorAll('.toolbar-btn[data-command]').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const command = this.dataset.command;
+        const value = this.dataset.value || null;
+        document.execCommand(command, false, value);
+        editor.focus();
+    });
+});
+
+// Headings select
+document.getElementById('heading-select').addEventListener('change', function() {
+    if (this.value) {
+        document.execCommand('formatBlock', false, this.value);
+    } else {
+        document.execCommand('formatBlock', false, 'P');
+    }
+    editor.focus();
+    this.value = '';
+});
+
+// Font size select
+document.getElementById('fontsize-select').addEventListener('change', function() {
+    document.execCommand('fontSize', false, this.value);
+    editor.focus();
+});
+
+// Line gap
+document.getElementById('line-gap-btn').addEventListener('click', function() {
+    editor.focus();
+    document.execCommand('insertHTML', false, '<br><br>');
+});
+
+// Text color
+document.getElementById('text-color').addEventListener('input', function() {
+    document.execCommand('foreColor', false, this.value);
+    editor.focus();
+});
+
+// Insert table
+document.getElementById('insert-table-btn').addEventListener('click', function() {
+    const rows = prompt('Number of rows:', '3');
+    const cols = prompt('Number of columns:', '3');
+    if (!rows || !cols) return;
+
+    let table = '<table class="editor-table"><tbody>';
+    for (let r = 0; r < parseInt(rows); r++) {
+        table += '<tr>';
+        for (let c = 0; c < parseInt(cols); c++) {
+            table += '<td contenteditable="true">&nbsp;</td>';
+        }
+        table += '</tr>';
+    }
+    table += '</tbody></table><br>';
+    document.execCommand('insertHTML', false, table);
+    editor.focus();
+});
+</script>
+

@@ -1,0 +1,51 @@
+{
+  "allPostDatas": [],
+  "allDraftDatas": [],
+  "allTrashDatas": [
+    {
+      "postTitle": "CHECK THE POSTS",
+      "postBody": "<h3>CHECK IF THERE IS ANY CODE WITHIN THE REAL CONTENT.&nbsp;</h3><div><ul><li>CHECK IF THERE IS ANY CODE WITHIN THE REAL CONTENT.&nbsp;</li></ul><div><div style=\"text-align: center;\"><span style=\"font-size: 0.95rem;\">CHECK IF THERE IS ANY CODE WITHIN THE REAL CONTENT.&nbsp;</span></div><div><div style=\"text-align: center;\"><span style=\"font-size: 0.95rem;\">CHECK IF THERE IS ANY CODE WITHIN THE REAL CONTENT.&nbsp;</span></div><div><blockquote style=\"text-align: justify;\"><span style=\"font-size: 0.95rem;\">CHECK IF THERE IS ANY CODE WITHIN THE REAL CONTENT.&nbsp;</span></blockquote><div><div style=\"text-align: justify;\"><span style=\"font-size: 0.95rem;\">CHECK IF THERE IS ANY CODE WITHIN THE REAL CONTENT.&nbsp;</span></div><div><br style=\"font-size: 15.2px;\"></div></div></div></div></div></div>",
+      "postID": "37e13794-3bd1-4ca5-b793-cbc3cde029c2",
+      "createdAt": "Apr 23, 2026",
+      "deletedAt": 1776918200140,
+      "deletedAtFormatted": "Apr 23, 2026",
+      "origin": "published"
+    },
+    {
+      "postTitle": "DRAFT NOT GETTING DELETED",
+      "postBody": "<h2><font size=\"5\">emo content is sample data—including text, images, menus, and widgets—</font></h2><div><br></div><div>used to populate a new website theme or product, allowing users to visualize&nbsp;</div><div><br></div><div><ul><li>the final design and functionality before creating their own content.&nbsp;</li></ul><span style=\"font-size: 0.95rem;\"><div style=\"text-align: center;\"><span style=\"font-size: 0.95rem;\">It acts as a blueprint, showing how layouts, blocks, and formatting work, and is typically imported during theme setup to&nbsp;</span></div></span></div>",
+      "postID": "5b73f65b-50ec-482c-a6ce-ef05a3d4d2f1",
+      "createdAt": "Apr 22, 2026",
+      "deletedAt": 1776918205228,
+      "deletedAtFormatted": "Apr 23, 2026",
+      "origin": "published"
+    },
+    {
+      "postTitle": "It's my DRAFT POST",
+      "postBody": "<h2>Draft your next blog post and share your insights with the world.&nbsp;</h2><div><br><div><ul><li>&nbsp;Draft your next blog post and share your insights with the world.&nbsp;</li><li>&nbsp;Draft your next blog post and share your insights with the world.&nbsp;</li></ul><ol><li><span style=\"font-size: 0.95rem;\">&nbsp;Draft your next blog post and share your insights with the world.&nbsp;</span></li><li><span style=\"font-size: 0.95rem;\">&nbsp;Draft your next blog post and share your insights with the world.&nbsp;</span></li><li><span style=\"font-size: 0.95rem;\">&nbsp;Draft your next blog post and share your insights with the world.&nbsp;</span></li></ol><span style=\"font-size: 0.95rem;\">&nbsp;</span></div></div>",
+      "postID": "1e04f243-987a-4928-b8eb-9ea5af581cc6",
+      "createdAt": "Apr 21, 2026",
+      "deletedAt": 1776918207109,
+      "deletedAtFormatted": "Apr 23, 2026",
+      "origin": "published"
+    },
+    {
+      "postTitle": "It's my DRAFT POST 222 YEAH",
+      "postBody": "<h3><font size=\"4\">emo content is sample data—including text, images, menus, and widgets—</font></h3><div><br></div><div>used to populate a new website theme or product, allowing users to visualize the final design and functionality before creating their own content. It acts as a blueprint, showing how layouts, blocks, and formatting work, and is typically imported during theme setup to mimic a live demo site.</div>",
+      "postID": "62ede85e-44d2-4beb-b4aa-63e8d0b1708b",
+      "createdAt": "Apr 22, 2026",
+      "deletedAt": 1776918208349,
+      "deletedAtFormatted": "Apr 23, 2026",
+      "origin": "published"
+    },
+    {
+      "postTitle": "It's my DRAFT POST 222",
+      "postBody": "Draft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\nDraft your next blog post and share your insights with the world.\r\n\r\n",
+      "postID": "529e270c-60b9-4281-b60b-5830349bbc54",
+      "createdAt": "Apr 21, 2026",
+      "deletedAt": 1776918210221,
+      "deletedAtFormatted": "Apr 23, 2026",
+      "origin": "published"
+    }
+  ]
+}
