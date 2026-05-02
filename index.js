@@ -308,12 +308,9 @@ app.get("/restore-post", (req, res) => {
 });
 
 
-//for vercel app, export the app instead of listening to a port directly
-export default app;
+//for render app to listen on port 3000
+app.listen(port, () => {
+    console.log(`Server Running on port ${port}`);
+});
 
-// Keep this for local development
-if(process.env.NODE_ENV !== "production") {
-    app.listen(port, () => {
-        console.log(`Sever Running on port ${port}`);
-    });
-}
+export default app;
