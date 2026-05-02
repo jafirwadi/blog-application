@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -308,6 +308,12 @@ app.get("/restore-post", (req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`Server Running on Port ${port}.`);
-});
+//for vercel app, export the app instead of listening to a port directly
+export default app;
+
+// Keep this for local development
+if(process.env.NODE_ENV !== "production") {
+    app.listen(port, () => {
+        console.log(`Sever Running on port ${port}`);
+    });
+}
